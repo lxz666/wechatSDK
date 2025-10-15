@@ -1,0 +1,42 @@
+/* Page transition styles simulating native app behavior */
+
+.page-stage {
+  /* the container is in NativeNavContainer.vue */
+}
+
+.transition-slide-in > .view-enter-active,
+.transition-slide-in > .view-leave-active,
+.transition-slide-out > .view-enter-active,
+.transition-slide-out > .view-leave-active,
+.transition-fade > .view-enter-active,
+.transition-fade > .view-leave-active,
+.transition-switch > .view-enter-active,
+.transition-switch > .view-leave-active {
+  transition: transform 280ms cubic-bezier(.22,.61,.36,1), opacity 280ms ease;
+}
+
+/* We wrap RouterView content using a Transition with name "view" in pages if needed. */
+
+/* Forward push: new page from right */
+.transition-slide-in > .view-enter-from { transform: translateX(30%); opacity: .96; }
+.transition-slide-in > .view-enter-to   { transform: translateX(0); opacity: 1; }
+.transition-slide-in > .view-leave-from { transform: translateX(0); opacity: 1; }
+.transition-slide-in > .view-leave-to   { transform: translateX(-10%); opacity: .9; }
+
+/* Back pop: current page to right */
+.transition-slide-out > .view-enter-from { transform: translateX(-10%); opacity: .98; }
+.transition-slide-out > .view-enter-to   { transform: translateX(0); opacity: 1; }
+.transition-slide-out > .view-leave-from { transform: translateX(0); opacity: 1; }
+.transition-slide-out > .view-leave-to   { transform: translateX(30%); opacity: .96; }
+
+/* Fade replace */
+.transition-fade > .view-enter-from { opacity: 0; }
+.transition-fade > .view-enter-to   { opacity: 1; }
+.transition-fade > .view-leave-from { opacity: 1; }
+.transition-fade > .view-leave-to   { opacity: 0; }
+
+/* SwitchTab could combine fade/slide as desired */
+.transition-switch > .view-enter-from { opacity: 0; }
+.transition-switch > .view-enter-to   { opacity: 1; }
+.transition-switch > .view-leave-from { opacity: 1; }
+.transition-switch > .view-leave-to   { opacity: 0; }
