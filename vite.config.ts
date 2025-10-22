@@ -11,6 +11,11 @@ export default defineConfig({
     AutoImport({
       resolvers: [VantResolver()],
       dts: 'auto-imports.d.ts',
+      eslintrc: {
+        enabled: false,
+      },
+      // 不添加 @ts-nocheck 注释
+      vueTemplate: true,
     }),
     Components({
       resolvers: [VantResolver()],

@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vue-tsc -b && vite build",
+    "type-check": "node scripts/fix-auto-imports.js && vue-tsc -b",
+    "build": "npm run type-check && vite build",
     "preview": "vite preview"
   },
   "dependencies": {
